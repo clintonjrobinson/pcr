@@ -1,16 +1,18 @@
 "use strict";
 
-const UI_PATH = './ui';
+const isProduction = process.env.NODE_ENV === 'production';
 
 var fs = require('fs');
 var path = require('path');
 
 var UIPackage = require('./lib/UIPackage').UIPackage;
+var UI_PATH = UIPackage.UI_PATH;
+
 var PolymerElementFile = require('./lib/File').PolymerElementFile;
 var readFile = require('./lib/utils').readFile;
 
 function PCR(options) {
-  if (!(this instanceof Polymerize)) return new PCR(options);
+  if (!(this instanceof PCR)) return new PCR(options);
 
   options = options || {};
 
@@ -55,7 +57,7 @@ PCR.prototype.paths = function () {
           file = file[subFile];
         }
 
-        this.type = file.ext;
+        this.type = file.contentType;
         this.body = file.transformed;
         return;
       }
