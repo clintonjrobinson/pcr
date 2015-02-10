@@ -1,0 +1,30 @@
+{
+  "name": "pcr",
+  "version": "0.1.0",
+  "description": "Polymer Chain Reaction - UI Bundling middleware for Koa and with Polymer in mind",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clintonjrobinson/pcr.git"
+  },
+  "keywords": [
+    "Polymer",
+    "Koa",
+    "UI"
+  ],
+  "author": "Clinton J Robinson",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/clintonjrobinson/pcr/issues"
+  },
+  "homepage": "https://github.com/clintonjrobinson/pcr",
+  "dependencies": {
+    "autoprefixer": "^5.1.0",
+    "clean-css": "^3.0.10",
+    "node-sass": "^2.0.0-beta",
+    "uglify-js": "^2.4.16"
+  }
+}
