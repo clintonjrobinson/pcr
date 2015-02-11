@@ -16,8 +16,8 @@ function PCR(options) {
 
   options = options || {};
 
-  this.routes = options.routes || this.routes;
-  this.UI = {};
+  this.routes = options.routes || {};
+  this.packages = {};
   this.pages = {};
 
   var self = this;
@@ -26,7 +26,7 @@ function PCR(options) {
     files.map(function(file) {
       fs.stat(path.join(UI_PATH, file), function(err, stat) {
         if (stat.isDirectory()) {
-          self.UI[file] = new UIPackage(file);
+          self.packages[file] = new UIPackage(file);
         }
       })
     });
@@ -43,11 +43,11 @@ PCR.prototype.paths = function () {
     if (this.method === 'GET') {
       if (/\/pcr\/ui\//.test(this.path)) {
         let parts = this.path.split('/');
-        let uiName = parts[3];
+        let packageName = parts[3];
         let name = parts[4];
         let subFile = parts[5];
 
-        let file = self.UI[uiName].files[name];
+        let file = self.packages[packageName].files[name];
 
         if (!file) {
           throw new Error('Cannot find ' + this.path);
@@ -67,7 +67,7 @@ PCR.prototype.paths = function () {
 
           //Check cache first
           if (!(isProduction && self.pages[this.path])) {
-            self.pages[this.path] = yield self.parse(routes[route]);
+            self.pages[this.path] = yield self.parse(route);
           }
 
           this.body = self.pages[this.path];
@@ -79,8 +79,17 @@ PCR.prototype.paths = function () {
   }
 };
 
-PCR.prototype.parse = function *(filePath) {
+PCR.prototype.parse = function *(route) {
+  var self = this;
+
+  var filePath = this.routes[route];
   var html = yield readFile(filePath);
+
+  var watcher = fs.watch(filePath);
+  watcher.on('change', function() {
+    //Flush cache
+    delete self.pages[route];
+  });
 
   //Split the html based on  {{, }}, {%, %}, {=, =}
   var tokens = html.split(/(\[\[|\]\]|\[%|%\]|\[=|=\])/);
@@ -125,7 +134,7 @@ PCR.prototype.parse = function *(filePath) {
       for (let j=0; j<uis.length; j++) {
         let ui = uis[j].trim();
         result += `<!-- ui package: ${ui} -->\n`;
-        result += this.UI[ui].toString();
+        result += this.packages[ui].toString();
       }
     }
 
