@@ -1,6 +1,5 @@
 "use strict";
-
-const isProduction = process.env.NODE_ENV === 'production';
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 var fs = require('fs');
 var path = require('path');
@@ -66,7 +65,7 @@ PCR.prototype.paths = function () {
         if (this.path === route) {
 
           //Check cache first
-          if (!(isProduction && self.pages[this.path])) {
+          if (!(IS_PRODUCTION && self.pages[this.path])) {
             self.pages[this.path] = yield self.parse(route);
           }
 
