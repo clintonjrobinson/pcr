@@ -7,7 +7,7 @@ var path = require('path');
 var UIPackage = require('./lib/UIPackage').UIPackage;
 var UI_PATH = UIPackage.UI_PATH;
 
-var PolymerElementFile = require('./lib/File').PolymerElementFile;
+var PolymerElementFile = require('./lib/File/File').PolymerElementFile;
 var readFile = require('./lib/utils').readFile;
 
 function PCR(options) {
