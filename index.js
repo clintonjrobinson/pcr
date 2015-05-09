@@ -30,5 +30,6 @@ function PCR(options) {
 
 exports = module.exports = PCR;
 
+PCR.prototype.render = require('./lib/parse').render;
 PCR.prototype.parse = require('./lib/parse').parse;
 PCR.prototype.paths = require('./lib/paths').paths;
