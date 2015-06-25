@@ -22,9 +22,9 @@
   },
   "homepage": "https://github.com/clintonjrobinson/pcr",
   "dependencies": {
-    "autoprefixer": "^5.1.1",
-    "clean-css": "^3.2.9",
-    "node-sass": "^3.0.0",
-    "uglify-js": "^2.4.21"
+    "autoprefixer": "^5.2.0",
+    "clean-css": "^3.3.4",
+    "node-sass": "^3.2.0",
+    "uglify-js": "^2.4.23"
   }
 }
