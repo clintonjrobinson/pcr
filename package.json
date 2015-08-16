@@ -23,6 +23,7 @@
   "homepage": "https://github.com/clintonjrobinson/pcr",
   "dependencies": {
     "autoprefixer": "^5.2.0",
+    "babel": "^5.8.21",
     "chokidar": "^1.0.5",
     "clean-css": "^3.3.9",
     "msx": "^0.4.1",
