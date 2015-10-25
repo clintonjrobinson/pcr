@@ -22,13 +22,12 @@
   },
   "homepage": "https://github.com/clintonjrobinson/pcr",
   "dependencies": {
-    "autoprefixer": "^5.2.0",
-    "babel": "^5.8.21",
-    "chokidar": "^1.0.5",
-    "clean-css": "^3.3.9",
-    "msx": "^0.4.1",
-    "node-sass": "^3.2.0",
-    "postcss": "^4.1.16",
-    "uglify-js": "^2.4.24"
+    "autoprefixer": "^6.0.3",
+    "babel": "^5.8.29",
+    "chokidar": "^1.2.0",
+    "clean-css": "^3.4.6",
+    "node-sass": "^3.4.0",
+    "postcss": "^5.0.10",
+    "uglify-js": "^2.5.0"
   }
 }
